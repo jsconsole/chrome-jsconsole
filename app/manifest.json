@@ -1,0 +1,41 @@
+{
+  "name": "__MSG_appName__",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "__MSG_appDescription__",
+  "icons": {
+    "16": "images/icon-16.png",
+    "128": "images/icon-128.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "scripts": [
+      "scripts/chromereload.js",
+      "scripts/background.js"
+    ]
+  },
+  "content_security_policy": "script-src 'self' filesystem: http://localhost:* https://localhost:* https://ajax.googleapis.com https://code.jquery.com https://cdnjs.cloudflare.com https://unpkg.com https://maxcdn.com https://cdn77.com https://maxcdn.bootstrapcdn.com https://cdn.jsdelivr.net/ https://*.stripe.com/ https://builds.framerjs.com/ https://rawgit.com https://wzrd.in https://www.google-analytics.com 'unsafe-eval'; object-src 'self'",
+  "permissions": [
+    "tabs",
+    "http://*/*",
+    "https://*/*",
+    "background",
+    "webRequest",
+    "*://*.google.com/",
+    "webRequestBlocking"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "scripts/contentscript.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+  "web_accessible_resources": ["scripts/main.js"]
+}
