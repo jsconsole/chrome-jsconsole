@@ -4,6 +4,15 @@
   "engines": {
     "node": ">=0.8.0"
   },
+  "scripts": {
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-plugin-syntax-async-functions": "^6.13.0",
@@ -11,6 +20,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "del": "^2.2.0",
+    "eslint-config-prettier": "^2.3.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-browserify": "^0.5.1",
@@ -28,35 +38,11 @@
     "gulp-uglify": "^1.5.3",
     "gulp-useref": "^3.0.8",
     "gulp-zip": "^3.2.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.0.2",
     "main-bower-files": "^2.11.1",
+    "prettier": "^1.5.3",
     "run-sequence": "^1.1.5",
     "wiredep": "^4.0.0"
-  },
-  "eslintConfig": {
-    "env": {
-      "node": true,
-      "browser": true,
-      "es6": true
-    },
-    "globals": {
-      "chrome": true
-    },
-    "rules": {
-      "eol-last": 0,
-      "quotes": [
-        2,
-        "single"
-      ]
-    },
-    "parserOptions": {
-      "ecmaVersion": 8,
-      "sourceType": "module",
-      "ecmaFeatures": {
-        "jsx": true
-      }
-    }
-  },
-  "dependencies": {
-    "babel-polyfill": "^6.23.0"
   }
 }
