@@ -1,11 +1,14 @@
 {
-  "name": "__MSG_appName__",
+  "name": "JSconsole",
   "version": "0.0.1",
   "manifest_version": 2,
-  "description": "__MSG_appDescription__",
+  "description": "A Swiss knife for all the problems that you can solve in console.",
   "icons": {
     "16": "images/icon-16.png",
     "128": "images/icon-128.png"
+  },
+  "browser_action": {
+    "default_icon": "images/icon-32.png"
   },
   "default_locale": "en",
   "background": {
