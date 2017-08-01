@@ -1,11 +1,12 @@
-const style = {
-  color: "#107896",
-  fontSize: "12px",
-  fontWeight: 500,
-  lineHeight: "18px"
-};
-const LIST = ["angular", "jQuery", "lodash", "moment", "react"];
 const js = function() {
+  const style = {
+    color: "#107896",
+    fontSize: "12px",
+    fontWeight: 500,
+    lineHeight: "18px"
+  };
+  const ALIAS = ["angular", "jQuery", "lodash", "moment", "react"];
+  const LOADEDLIST = [];
   const _getList = function(name) {
     var url = `https://api.cdnjs.com/libraries?search=${name}&fields=version,description,homepage`;
     return fetch(url).then(function(dataJSON) {
@@ -29,11 +30,11 @@ const js = function() {
   };
   const _printList = function() {
     const data = [
-      { Name: LIST[0], Command: "js.load(0)" },
-      { Name: LIST[1], Command: "js.load(1)" },
-      { Name: LIST[2], Command: "js.load(2)" },
-      { Name: LIST[3], Command: "js.load(3)" },
-      { Name: LIST[4], Command: "js.load(4)" }
+      { Name: ALIAS[0], Command: "js.load(0)" },
+      { Name: ALIAS[1], Command: "js.load(1)" },
+      { Name: ALIAS[2], Command: "js.load(2)" },
+      { Name: ALIAS[3], Command: "js.load(3)" },
+      { Name: ALIAS[4], Command: "js.load(4)" }
     ];
     console.table(data);
   };
@@ -48,13 +49,13 @@ const js = function() {
       return;
     }
     if (Number.isInteger(value)) {
-      if (!LIST[value]) {
+      if (!ALIAS[value]) {
         _print("Enter valid NUMBER_FROM_LIST value, select from below list");
         _printList();
         return;
       } else {
-        loadingValues.push(LIST[value]);
-        loadingList.push(_getList(LIST[value]));
+        loadingValues.push(ALIAS[value]);
+        loadingList.push(_getList(ALIAS[value]));
       }
     } else if (typeof singleData === "string" && _isValidURL(value)) {
       loadingValues.push(value);
@@ -70,15 +71,15 @@ const js = function() {
           loadingList.push(singleValue);
           loadingValues.push(singleValue);
         } else if (Number.isInteger(singleValue)) {
-          if (!LIST[singleValue]) {
+          if (!ALIAS[singleValue]) {
             _print(
               "Enter valid NUMBER_FROM_LIST value, select from below list"
             );
             _printList();
             return;
           } else {
-            loadingValues.push(LIST[singleValue]);
-            loadingList.push(_getList(LIST[singleValue]));
+            loadingValues.push(ALIAS[singleValue]);
+            loadingList.push(_getList(ALIAS[singleValue]));
           }
         } else {
           loadingValues.push(singleValue.trim());
@@ -110,6 +111,10 @@ const js = function() {
             );
             script.onload = function() {
               _print(`Loading completed for ${singleResult.name}`);
+              LOADEDLIST.push({
+                Name: singleResult.name || "NA",
+                URL: singleResult.latest || "NA"
+              });
             };
             script.onerror = function() {
               _print(`Some error occur whilte loading ${singleResult.name}`);
@@ -129,6 +134,10 @@ const js = function() {
         } else if (typeof singleData === "string") {
           _print(`Loading... ${singleData}`);
           script.onload = function() {
+            LOADEDLIST.push({
+              Name: singleData || "NA",
+              URL: singleData || "NA"
+            });
             _print(`Loading completed for ${singleData}`);
           };
           script.onerror = function() {
@@ -167,6 +176,9 @@ const js = function() {
     });
   };
   const list = function() {
+    console.table(LOADEDLIST);
+  };
+  const alias = function() {
     _printList();
   };
   const clear = function() {
@@ -191,6 +203,7 @@ const js = function() {
   const result = {
     load,
     find,
+    alias,
     list,
     clear,
     unload,
@@ -202,14 +215,14 @@ const js = function() {
                                             %cJSconsole (A Swiss Knife for JS)`;
       const doc = `
 
-%cjs.load(NAME(String) || URL(String) || NUMBER_FROM_LIST(Number) || [NAME, URL, NUMBER_FROM_LIST](Array)):
-%cLoad the latest library from the internal CDN according to to NAME(S). For NUMBER_FROM_LIST use js.list();
+%cjs.load(NAME(String) || URL(String) || NUMBER_FROM_ALIAS(Number) || [NAME, URL, NUMBER_FROM_ALIAS](Array)):
+%cLoad the latest library from the internal CDN according to to NAME(S). For NUMBER_FROM_ALIAS use js.alias();
 
 %cjs.find(NAME(String), forceDisplayAll(Boolean)):
 %cSearch the top 10 libraries with the given name and if forceDisplayAll is true it will show all the librarires upto 1000.'
 
 %cjs.list():
-%cShow number alias for the top libraries.
+%cShow the list of already loaded libraries in the current session.
 
 %cjs.clear():
 %cClear your console screen.
@@ -217,8 +230,11 @@ const js = function() {
 %cjs.unload(force(Boolean)):
 %cAsk for confirmation and then Unload all the libraries along with refreshing the page. If force is true it will not ask for confirmation.
 
+%cjs.alias():
+%cShow the list of all the aliases available.
+
 %cjs.doc:
-%cBASIC Documentation for this Extension.
+%cBasic Documentation for this Extension.
 
 %cjs.rainbow():
 %cJust for fun.
@@ -228,6 +244,10 @@ const js = function() {
         _cssParser(
           Object.assign({}, style, { fontSize: "16px", lineHeight: "16px" })
         ),
+        _cssParser(
+          Object.assign({}, style, { fontSize: "12px", color: "#e5853d" })
+        ),
+        _cssParser(style),
         _cssParser(
           Object.assign({}, style, { fontSize: "12px", color: "#e5853d" })
         ),
