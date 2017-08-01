@@ -176,7 +176,11 @@ const js = function() {
     });
   };
   const list = function() {
-    console.table(LOADEDLIST);
+    if (LOADEDLIST.length > 0) {
+      console.table(LOADEDLIST);
+    } else {
+      _print("Nothing is loaded yet!!!, Use js.load() to load some shit.");
+    }
   };
   const alias = function() {
     _printList();
