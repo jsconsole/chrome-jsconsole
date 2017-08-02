@@ -1,4 +1,16 @@
 const js = function() {
+  const toObject = function(arr, key) {
+    const rv = {};
+    let keyValue;
+    let singleObject;
+    for (var i = 0; i < arr.length; ++i) {
+      keyValue = arr[i][key];
+      singleObject = Object.assign({}, arr[i]);
+      delete singleObject[key];
+      rv[keyValue] = singleObject;
+    }
+    return rv;
+  };
   const style = {
     color: "#107896",
     fontSize: "12px",
@@ -30,13 +42,13 @@ const js = function() {
   };
   const _printList = function() {
     const data = [
-      { Name: ALIAS[0], Command: "js.load(0)" },
-      { Name: ALIAS[1], Command: "js.load(1)" },
-      { Name: ALIAS[2], Command: "js.load(2)" },
-      { Name: ALIAS[3], Command: "js.load(3)" },
-      { Name: ALIAS[4], Command: "js.load(4)" }
+      { name: ALIAS[0], command: "js.load(0)" },
+      { name: ALIAS[1], command: "js.load(1)" },
+      { name: ALIAS[2], command: "js.load(2)" },
+      { name: ALIAS[3], command: "js.load(3)" },
+      { name: ALIAS[4], command: "js.load(4)" }
     ];
-    console.table(data);
+    console.table(toObject(data, "name"));
   };
   const _print = function(data) {
     console.log(`%c${data}`, _cssParser());
@@ -112,8 +124,8 @@ const js = function() {
             script.onload = function() {
               _print(`Loading completed for ${singleResult.name}`);
               LOADEDLIST.push({
-                Name: singleResult.name || "NA",
-                URL: singleResult.latest || "NA"
+                name: singleResult.name || "NA",
+                url: singleResult.latest || "NA"
               });
             };
             script.onerror = function() {
@@ -128,15 +140,15 @@ const js = function() {
                 index
               ]}" to be any of the below results ?`
             );
-            console.table(singleData.results.slice(0, 10));
+            console.table(toObject(singleData.results.slice(0, 10), "name"));
             _print('Try js.find("name")');
           }
         } else if (typeof singleData === "string") {
           _print(`Loading... ${singleData}`);
           script.onload = function() {
             LOADEDLIST.push({
-              Name: singleData || "NA",
-              URL: singleData || "NA"
+              name: singleData || "NA",
+              url: singleData || "NA"
             });
             _print(`Loading completed for ${singleData}`);
           };
@@ -162,13 +174,13 @@ const js = function() {
       if (result && result.length > 0) {
         _print("Here is the list");
         if (force) {
-          console.table(result);
+          console.table(toObject(result, "name"));
         } else {
           if (result.length > 10)
             _print(
               `Only Top 10 results has been shown below out of ${result.length}, if wanna see all use js.find('${value}', true)`
             );
-          console.table(result.slice(0, 10));
+          console.table(toObject(result.slice(0, 10), "name"));
         }
       } else {
         _print(`Sorry no cdn list found for ${value}`);
@@ -177,7 +189,7 @@ const js = function() {
   };
   const list = function() {
     if (LOADEDLIST.length > 0) {
-      console.table(LOADEDLIST);
+      console.table(toObject(LOADEDLIST, "name"));
     } else {
       _print("Nothing is loaded yet!!!, Use js.load() to load some shit.");
     }
