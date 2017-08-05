@@ -1,4 +1,4 @@
-**JSconsole**: It is a chrome extension that saves context and help developers to experiment with JS in their favourite ❤️ developer console.
+**JSconsole** is a Chrome Extension that helps developer to load external JS libraries within their favourite ❤️ developer console.
 ======
 
 ### [INSTALL EXTENSION](https://jsconsole.github.io)
