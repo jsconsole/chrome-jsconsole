@@ -1,6 +1,6 @@
 {
   "name": "JSconsole",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "manifest_version": 2,
   "description": "A Swiss knife for all the problems that you can solve in console.",
   "icons": {
