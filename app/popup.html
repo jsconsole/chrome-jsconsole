@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Twitter Client</title>
+    <!-- build:css styles/popup-vendor.css -->
+    <link rel="stylesheet" href="styles/hint.css">
+    <link rel="stylesheet" href="styles/fontawesome.css">
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css styles/main.css -->
+    <link href="styles/main.css" rel="stylesheet">
+    <!-- endbuild -->
+</head>
+
+<body>
+    <div class="row">
+        <span class="header js-header">JSconsole</span>
+    </div>
+    <div class="row">
+        <span class="hint--bottom row__item" aria-label="Status">
+            <input type="checkbox" id="js-status" checked />
+            <label for="js-status" class="js-status"></label>
+        </span>
+        <span class="hint--bottom icons row__item" aria-label="Feedback">
+            <div class="fa fa-commenting-o js-feedback"></div>
+        </span>
+    </div>
+    <div class="row">
+        <span class="hint--top icons row__item" aria-label="Rating">
+            <div class="fa fa-star js-rating"></div>
+        </span>
+        <span class="hint--top icons row__item" aria-label="Tweet">
+            <div class="fa fa-twitter js-twitter "></div>
+        </span>
+    </div>
+    <!-- build:js scripts/popup.js -->
+    <script src="scripts/popup.js"></script>
+    <!-- endbuild -->
+</body>
+
+</html>
