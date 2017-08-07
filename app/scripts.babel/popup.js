@@ -36,6 +36,9 @@ document.addEventListener(
     } else if (hasClass(e.target, "js-twitter")) {
       tweet();
     } else if (hasClass(e.target, "js-rating")) {
+      openURL(
+        "https://chrome.google.com/webstore/detail/sum-it-up/aplckfckjlmdalfikgbfhmpkcieajkma/reviews"
+      );
     } else if (hasClass(e.target, "js-header")) {
       openURL("https://jsconsole.github.io");
     }
