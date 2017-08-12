@@ -55,25 +55,25 @@ const js = function() {
                                             %cJSconsole (A Swiss Knife for JS)`;
     const doc = `
 
-%cjs.load(NAME(String) || URL(String) || NUMBER_FROM_ALIAS(Number) || [NAME, URL, NUMBER_FROM_ALIAS](Array)):
+%cjs.load(NAME(String) || URL(String) || NUMBER_FROM_ALIAS(Number) || [NAME, URL, NUMBER_FROM_ALIAS](Array))
 %cLoad the latest library from the internal CDN according to to NAME(S). For NUMBER_FROM_ALIAS use js.alias();
 
 %cjs.find(NAME(String), forceDisplayAll(Boolean)):
 %cSearch the top 10 libraries with the given name and if forceDisplayAll is true it will show all the librarires upto 1000.'
 
-%cjs.list():
+%cjs.list()
 %cShow the list of already loaded libraries in the current session.
 
-%cjs.clear():
+%cjs.clear()
 %cClear your console screen.
 
-%cjs.unload(force(Boolean)):
+%cjs.unload(force(Boolean))
 %cAsk for confirmation and then Unload all the libraries along with refreshing the page. If force is true it will not ask for confirmation.
 
-%cjs.alias():
+%cjs.alias()
 %cShow the list of all the aliases available.
 
-%cjs.doc:
+%cjs.doc or js.readme()
 %cBasic Documentation for this Extension.
 
 %cjs.rainbow():
