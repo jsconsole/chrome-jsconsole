@@ -295,7 +295,10 @@ const js = function() {
       );
     }
   });
-  console.log(result.doc);
+  console.log(
+    "%cJSconsole has been loaded in your console. Type `js.docs` to know more !!!",
+    _cssParser()
+  );
   return result;
 };
 window.js = js();
