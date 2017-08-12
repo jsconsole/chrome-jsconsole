@@ -8,9 +8,24 @@ var tweet = function tweet() {
   var tweet_url = "https://twitter.com/intent/tweet?text=" + text;
   openURL(tweet_url);
 };
+var header = function() {
+  openURL("https://jsconsole.github.io");
+};
+var feedback = function() {
+  openURL("https://goo.gl/forms/gSeeeDP2nZwIvFhi1");
+};
+var rating = function() {
+  openURL(
+    "https://chrome.google.com/webstore/detail/jsconsole/aplckfckjlmdalfikgbfhmpkcieajkma/reviews"
+  );
+};
 var hasClass = function hasClass(element, className) {
   return element.className.split(" ").indexOf(className) > -1;
 };
+document.getElementById("header").addEventListener("click", header);
+document.getElementById("tweet").addEventListener("click", tweet);
+document.getElementById("feedback").addEventListener("click", feedback);
+document.getElementById("rating").addEventListener("click", rating);
 document.addEventListener(
   "click",
   function(e) {
@@ -31,16 +46,7 @@ document.addEventListener(
           chrome.tabs.sendMessage(tabs[0].id, { action: "LOAD" });
         });
       }
-    } else if (hasClass(e.target, "js-feedback")) {
-      openURL("https://goo.gl/forms/gSeeeDP2nZwIvFhi1");
-    } else if (hasClass(e.target, "js-twitter")) {
-      tweet();
-    } else if (hasClass(e.target, "js-rating")) {
-      openURL(
-        "https://chrome.google.com/webstore/detail/jsconsole/aplckfckjlmdalfikgbfhmpkcieajkma/reviews"
-      );
     } else if (hasClass(e.target, "js-header")) {
-      openURL("https://jsconsole.github.io");
     }
   },
   false

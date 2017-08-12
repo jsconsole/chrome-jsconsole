@@ -20,15 +20,21 @@ body{
     cursor: pointer;
 }
 .icons{
-    font-size: 40px;
+    width: 50px;
     color: black;
     padding: 5px;
     transition: all 0.3s ease;
     cursor: pointer;
 }
 .icons:hover{
-    color: rgb(88, 128, 230);
-    font-size: 50px;
+    width: 60px;
+}
+.icons svg{
+    width: 100%;
+    height: 50px;
+}
+.icons:hover svg{
+    fill: rgb(88, 128, 230);
 }
 input {
   display: block;
