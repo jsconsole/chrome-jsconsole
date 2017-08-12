@@ -73,7 +73,7 @@ const js = function() {
 %cjs.alias()
 %cShow the list of all the aliases available.
 
-%cjs.doc or js.readme()
+%cjs.readme() or js.doc
 %cBasic Documentation for this Extension.
 
 %cjs.rainbow():
