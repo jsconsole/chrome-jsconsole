@@ -137,7 +137,7 @@ const js = function() {
         loadingValues.push(ALIAS[value]);
         loadingList.push(_getList(ALIAS[value]));
       }
-    } else if (typeof singleData === "string" && _isValidURL(value)) {
+    } else if (typeof value === "string" && _isValidURL(value)) {
       loadingValues.push(value);
       loadingList.push(value);
     } else if (Array.isArray(value)) {
