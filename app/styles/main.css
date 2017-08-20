@@ -1,72 +1,111 @@
-body{
+body {
     width: 180px;
     background: whitesmoke;
     margin: 0;
 }
-.row{
+
+.row {
     display: flex;
 }
-.row__item{
+
+.row__item {
     flex-grow: 1;
     text-align: center;
 }
-.header{
+
+.header {
     background: black;
     color: white;
-    font-size: 25px;
+    font-size: 24px;
     width: 100%;
     text-align: center;
     padding: 5px 0;
     cursor: pointer;
 }
-.icons{
-    width: 50px;
-    color: black;
-    padding: 5px;
-    transition: all 0.3s ease;
+
+.icons {
+    padding: 5px 0;
+    margin: 5px 0;
     cursor: pointer;
 }
-.icons:hover{
-    width: 60px;
+
+.icons:first-child {
+    padding-left: 15px;
 }
-.icons svg{
-    width: 100%;
-    height: 50px;
+
+.icons:last-child {
+    padding-right: 15px;
 }
-.icons:hover svg{
+
+.icons svg {
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+}
+
+.icons:hover svg {
     fill: rgb(88, 128, 230);
+    transform: scale(1.25);
 }
+
 input {
-  display: block;
-  opacity: 0;
+    display: none;
 }
+
 label {
-  width: 60px;
-  height: 30px;
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  background: rgb(189, 189, 189);
-  border-radius: 30px;
-  
-  transition: background-color 0.4s;
-  -moz-transition: background-color 0.4s;
-  -webkit-transition: background-color 0.4s;
+    width: 80px;
+    height: 30px;
+    margin-top: 10px;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    background: rgb(218, 218, 218);
+    border-radius: 30px;
+    transition: background 0.4s ease;
+    -moz-transition: background 0.4s ease;
+    -webkit-transition: background 0.4s ease;
 }
+
+label:before {
+    position: absolute;
+    content: attr(data-off);
+    color: rgb(138, 138, 138);
+    text-align: right;
+    right: 11px;
+    font-size: 8px;
+    line-height: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-transform: uppercase;
+}
+
 label:after {
-  left: 0;
-  width: 20px;
-  height: 20px;
-  margin: 5px;
-  content: '';
-  position: absolute;
-  background: #FFF;
-  border-radius: 10px;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+    content: '';
+    position: absolute;
+    background: #FFF;
+    border-radius: 10px;
+    transition: left 0.2s ease;
+    -moz-transition: left 0.2s ease;
+    -webkit-transition: left 0.2s ease;
 }
+
 input:checked + label {
-  background: rgb(88, 128, 230);
+    background: rgb(88, 128, 230);
 }
+
+input:checked + label:before {
+    content: attr(data-on);
+    color: #FFF;
+    left: 11px;
+    text-align: left;
+}
+
 input:checked + label:after {
-  left: auto;
-  right: 0;
+    left: 50px;
 }
