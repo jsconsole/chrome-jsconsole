@@ -197,7 +197,7 @@ const js = function() {
               });
             };
             script.onerror = function() {
-              _print(`Some error occur whilte loading ${singleResult.name}`);
+              _print(`Some error occur while loading ${singleResult.name}`);
             };
             script.src = singleResult.latest;
             (document.head || document.documentElement).appendChild(script);
@@ -221,7 +221,7 @@ const js = function() {
             _print(`Loading completed for ${singleData}`);
           };
           script.onerror = function() {
-            _print(`Some error occur whilte loading ${singleData}`);
+            _print(`Some error occur while loading ${singleData}`);
           };
           script.src = singleData;
           (document.head || document.documentElement).appendChild(script);
